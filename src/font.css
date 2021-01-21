@@ -1,0 +1,17 @@
+@font-face { 
+    font-family: 'DancingScript'; 
+    src: 
+        url('../src/store/assets/fonts/static/DancingScript-Regular.ttf')  format('truetype');        
+        /* url('../src/store/assets/fonts/DancingScript-VariableFont_wght.ttf')  format('truetype');         */
+    font-weight: normal; 
+    font-style: normal; 
+  }
+  
+  @font-face { 
+    font-family: 'DancingScript'; 
+    src: 
+        url('../src/store/assets/fonts/static/DancingScript-Bold.ttf')  format('truetype');
+        /* url('../src/store/assets/fonts/DancingScript-VariableFont_wght.ttf')  format('truetype');         */
+    font-weight: bold; 
+    font-style: bold; 
+  }
