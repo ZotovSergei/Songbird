@@ -1,15 +1,18 @@
 import React from 'react'
-import QuestionsUi from '../../../components/Body/Questions/Questions'
-import Owl from '../../../store/assets/images/owl.jpg'
+import QuestionsUI from '../../../components/Body/Questions/Questions.jsx'
 
 export default function Questions() {
-  const title = 'Owl'
-
-  const description =
-    'Dolore proident culpa ad duis laborum. Nisi qui ut aute laborum sit veniam sit officia nostrud ipsum commodo velit. Aliquip et ex qui culpa quis.'
+  const questions = [
+    { id: '1', bird: 'Чайка' },
+    { id: '2', bird: 'Павлин' },
+    { id: '3', bird: 'Филин' },
+    { id: '4', bird: 'Сорока' },
+    { id: '5', bird: 'Ворон' },
+    { id: '6', bird: 'Воробей' },
+  ]
   return (
     <div>
-      <QuestionsUi title={title} description={description} photo={Owl} />
+      <QuestionsUI questions={questions} />
     </div>
   )
 }

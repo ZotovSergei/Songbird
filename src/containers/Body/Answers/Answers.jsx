@@ -1,18 +1,17 @@
 import React from 'react'
-import AnswersUI from '../../../components/Body/Answers/Answers.jsx'
+import AnswersUi from '../../../components/Body/Answers/Answers'
+import Owl from '../../../store/assets/images/owl.jpg'
+import ListAnswers from '../ListAnswers/ListAnswers'
 
 export default function Answers() {
-  const answers = [
-    { id: '1', bird: 'Чайка' },
-    { id: '2', bird: 'Павлин' },
-    { id: '3', bird: 'Филин' },
-    { id: '4', bird: 'Сорока' },
-    { id: '5', bird: 'Ворон' },
-    { id: '6', bird: 'Воробей' },
-  ]
+  const title = 'Owl'
+
+  const description =
+    'Dolore proident culpa ad duis laborum. Nisi qui ut aute laborum sit veniam sit officia nostrud ipsum commodo velit. Aliquip et ex qui culpa quis.'
   return (
     <div>
-      <AnswersUI answers={answers} />
+      <AnswersUi title={title} description={description} photo={Owl} />
+      <ListAnswers/>
     </div>
   )
 }

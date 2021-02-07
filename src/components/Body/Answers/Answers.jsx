@@ -1,12 +1,15 @@
 import React from 'react'
-import Item from '../Answers/Item/Item'
+import PhotoBird from './PhotoBird/PhotoBird'
+import Player from './Player/Player'
+import DescriptionBirds from './DescriptionBirds/DescriptionBirds'
 
 export default function Answers(props) {
-  const { answers } = props
-  const elements = answers.map((item) => (
-    <li key={item.id + '_' + item.bird}>
-      <Item name={item.bird} />
-    </li>
-  ))
-  return <ul>{elements}</ul>
+  const { title, description, photo } = props
+  return (
+    <div>
+      <PhotoBird photo={photo} />
+      <Player title={title} />
+      <DescriptionBirds description={description} />
+    </div>
+  )
 }
