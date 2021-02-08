@@ -3,11 +3,11 @@ import React from 'react'
 import ListAnswersUI from '../../../components/Body/ListAnswers/ListAnswers'
 import services from '../../../store/utils/services'
 export default function ListAnswers() {
-
+    const prepareListBirds =  services;
     return (
+        
         <div>
-            {console.log(services)}
-            {/* <ListAnswersUI birds={listBirds}/> */}
+            <ListAnswersUI birds={prepareListBirds}/>
         </div>
     )
 }

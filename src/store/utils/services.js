@@ -2,10 +2,11 @@ import list from '../utils/listBirds';
 import listBirds from '../utils/listBirds'
 import {flickr} from '../utils/credentials'
 
-const rebirds = (objBirds) => {
+const getBirds = (objBirds) => {
     let idx = Math.floor(Math.random()*6);
     return Object.entries(objBirds)
     .map((item)=>{
+        item.push(null);
         item.push(null);
         return item;
     })
@@ -15,8 +16,8 @@ const rebirds = (objBirds) => {
         return item;
     })
 }
-const birds  = rebirds(listBirds);
-const photoBird = (birds) => {
+
+const setAsnwerBird = (birds) => {
     let answer = null;
     birds.forEach(element => {
         if (element[2] === 'answer') {
@@ -25,15 +26,28 @@ const photoBird = (birds) => {
     });
     return answer;
 }
-const photo = photoBird(birds);
-const photoRequest = async (photoBird) => {
+
+const setPhotoAtAnswerBird = async (answer,birds) => {
     const {url, method , apiKey, mode} = flickr;
-    const urlFetch = url+method+apiKey+mode+photoBird[1];
+    const urlFetch = url+method+apiKey+mode+answer[1];
     debugger
-    await fetch(urlFetch).then((response)=> response.json()).then((result)=>console.log(result))
+    await fetch(urlFetch)
+    .then((response)=> response.json())
+    .then((result)=> {
+        for (const item of result.photos.photo) {
+            birds.forEach(element => {
+                if (element[2] === 'answer') {
+                    if (!!item.url_m) element[3] = item.url_m;
+                }
+            });
+            console.log(item)
+        }
+    })
 }
 
+const birds = getBirds(listBirds);
+const anwerBird = setAsnwerBird(birds);
+console.log(setPhotoAtAnswerBird(anwerBird,birds))
 
-console.log(photoRequest(photo))
-debugger
+
 export default birds;
