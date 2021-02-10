@@ -1,5 +1,4 @@
-import list from '../utils/listBirds';
-import listBirds from '../utils/listBirds'
+import {list, categoryQuestions} from '../utils/listBirds'
 import {flickr} from '../utils/credentials'
 
 const getBirds = (objBirds) => {
@@ -40,12 +39,11 @@ const setPhotoAtAnswerBird = async (answer,birds) => {
                     if (!!item.url_m) element[3] = item.url_m;
                 }
             });
-            console.log(item)
         }
     })
 }
 
-const birds = getBirds(listBirds);
+const birds = getBirds(list);
 const anwerBird = setAsnwerBird(birds);
 console.log(setPhotoAtAnswerBird(anwerBird,birds))
 

@@ -1,3 +1,11 @@
+const categoryQuestions = {
+    1:'Разминка',
+    2:'Воробьиные',
+    3:'Лесные птицы',
+    4:'Певчие птицы',
+    5:'Хищные птицы',
+    6:'Морские птицы',
+}
 const list = {
     Dove: "голубь",
     Raven: "ворон",
@@ -40,4 +48,5 @@ const list = {
     Loon: "гагара",
     Goldcrest: "королек",
 }
-export default list;
+export {list};
+export {categoryQuestions}
