@@ -1,51 +1,41 @@
-import {list, categoryQuestions} from '../utils/listBirds'
-import {flickr} from '../utils/credentials'
+// import { list, categoryQuestions } from '../utils/listBirds'
+import { flickr } from '../utils/credentials'
 
-const getBirds = (objBirds) => {
-    let idx = Math.floor(Math.random()*6);
-    return Object.entries(objBirds)
-    .map((item)=>{
-        item.push(null);
-        item.push(null);
-        return item;
-    })
-    .splice(0,6)
-    .map((item,index)=> {
-        if (index === idx) item[2] = 'answer';
-        return item;
-    })
+const getBirds = (group) => {
+  let idx = Math.floor(Math.random() * group.length)
+  group[idx].answer = 'anwer'
+  return Object.entries(group).map((item) => {
+    return item[1]
+  })
 }
 
-const setAsnwerBird = (birds) => {
-    let answer = null;
-    birds.forEach(element => {
-        if (element[2] === 'answer') {
-            answer = element;
-        }
-    });
-    return answer;
+const groupAnswers = async (group) => {
+  const { url, method, apiKey, mode } = flickr
+  let urlFetch = null
+  let getItemBirdByPhoto = null
+  const birds = getBirds(group)
+  birds.forEach((item, index) => {
+    if (item.answer !== null) {
+      getItemBirdByPhoto = { id: index, item: item }
+      let nameBirdsEnglish = Object.keys(item)[0]
+      urlFetch = url + method + apiKey + mode + nameBirdsEnglish
+    }
+  })
+  try {
+    birds[getItemBirdByPhoto.id].photo = await requestFlickr(urlFetch)
+    return await birds
+  } catch (error) {
+    return new Error(error)
+  }
 }
 
-const setPhotoAtAnswerBird = async (answer,birds) => {
-    const {url, method , apiKey, mode} = flickr;
-    const urlFetch = url+method+apiKey+mode+answer[1];
-    debugger
-    await fetch(urlFetch)
-    .then((response)=> response.json())
-    .then((result)=> {
-        for (const item of result.photos.photo) {
-            birds.forEach(element => {
-                if (element[2] === 'answer') {
-                    if (!!item.url_m) element[3] = item.url_m;
-                }
-            });
-        }
+const requestFlickr = async (urlFetch) =>
+  await fetch(urlFetch)
+    .then((response) => response.json())
+    .then((result) => {
+      for (const item of result.photos.photo) {
+        if (!!item.url_m) return item.url_m
+      }
     })
-}
 
-const birds = getBirds(list);
-const anwerBird = setAsnwerBird(birds);
-console.log(setPhotoAtAnswerBird(anwerBird,birds))
-
-
-export default birds;
+export default groupAnswers
