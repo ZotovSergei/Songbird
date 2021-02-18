@@ -28,14 +28,23 @@ html {
   height: 264px;
   border-radius: 15px;
 }
-audio {
+audio,
+audio:active,
+audio:focus {
   width: 100%;
+  outline: none;
 }
 .button__next {
   margin-top: 10px;
   width: 100%;
   height: 40px;
   border-radius: 15px;
+}
+button, 
+button:active, 
+button:focus {
+    outline: none;
+    cursor: pointer;
 }
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

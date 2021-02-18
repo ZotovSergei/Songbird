@@ -9,7 +9,7 @@ export default function ListAnswers(props) {
     <Item
       key={iDx.toString()}
       id={el.en}
-      name={el.ru}
+      name={el.ru.toUpperCase()}
       answer={el.answer}
       handlerClick={handlerClick}
       viewElementQuestions={viewElementQuestions}
