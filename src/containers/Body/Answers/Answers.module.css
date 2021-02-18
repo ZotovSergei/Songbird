@@ -3,11 +3,13 @@
     grid-template-areas: 
     "question question"
     "list_answer answer";
-    grid-template-rows: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
     grid-template-columns: 1fr 1fr;
     align-items: start;
-    justify-items: center;
-    grid-gap: 30px;
+    grid-gap: 20px;
+    padding: 10px;
+    background: cadetblue;
+    border-radius: 15px;
 }
 
 #question {
@@ -15,4 +17,7 @@
 }
 #answer {
     grid-area: answer;
+}
+.answer {
+    flex-direction: column;
 }

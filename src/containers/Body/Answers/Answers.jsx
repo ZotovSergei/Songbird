@@ -16,11 +16,12 @@ export default function Answers(props) {
     <div className={styles.data}>
       <AnswersUI
         title={viewElementsAnswers ? answer[0].ru : '????'}
-        description={viewElementQuestions ? description : false}
+        description={false ? description : false}
         photo={(!!answer[0] && viewElementsAnswers) ? answer[0].photo : null}
         viewElementsAnswers={viewElementsAnswers}
         generateId = {styles.question}
         enabled={viewElementQuestions}
+        customStyle={'question'}
       />
       <ListAnswers groupAnswers={groupBirds} handlerClick={handlerClick} viewElementQuestions={viewElementQuestions}/>
       <AnswersUI
@@ -30,6 +31,8 @@ export default function Answers(props) {
         viewElementsAnswers = {viewElementsAnswers}
         generateId = {styles.answer}
         enabled={viewElementsAnswers}
+        customStyle={'answer'}
+        customClass={styles.answer}
       />
     </div>
   )

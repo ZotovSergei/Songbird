@@ -4,8 +4,10 @@
     justify-content: center;
 }
 .category__button {
-    width: 200px;
+    width: 170px;
     height: 40px;
+    border: 1px solid grey;
+    border-radius: 15px;
 }
 #categoryId {
     grid-area: category;

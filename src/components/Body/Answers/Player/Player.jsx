@@ -7,7 +7,7 @@ export default function Player(props) {
   return (
     <figure className={styles.player}>
       <figcaption>
-        <h3 className="player__caption">{enabled ? title : false}</h3>
+        <h3 className={styles.player__caption}>{enabled ? title : false}</h3>
       </figcaption>
       {enabled ? <audio controls src={sounds}></audio> :  false}
     </figure>

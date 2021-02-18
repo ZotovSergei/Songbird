@@ -30,7 +30,6 @@
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
-  height: 205px;
 }
 #titleId {
   grid-area: header_title;

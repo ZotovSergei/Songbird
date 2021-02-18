@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Item.module.css'
 
 export default function Item(props) {
-  const { id, name, answer ,handlerClick,viewElementQuestions} = props
+  const { id, name, handlerClick,viewElementQuestions} = props
 
   const getAnswer = (e) => {
     return handlerClick(e, props);
@@ -23,7 +23,14 @@ export default function Item(props) {
         className={styles.unselected + ' item_answer'}
       >
         {name}
-      </button>) : '-----------'
+      </button>) : <button
+        onClick={getAnswer}
+        key={id + '__' + name}
+        id={id}
+        className={styles.unselected + ' item_answer'}
+      >
+        {'--------------------'}
+      </button>
       }
     </li>
   )

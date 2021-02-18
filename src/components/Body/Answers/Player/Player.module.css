@@ -1,3 +1,7 @@
 .player {
     text-align: center;
+    width: 100%;
+}
+.player__caption {
+    margin-bottom: 20px;
 }
