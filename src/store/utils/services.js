@@ -4,9 +4,10 @@ import { flickr } from '../utils/credentials'
 const getBirds = (group) => {
   let idx = Math.floor(Math.random() * group.length)
   group[idx].answer = 'anwer'
-  return Object.entries(group).map((item) => {
-    return item[1]
-  })
+  // return Object.entries(group).map((item) => {
+  //   return item[1]
+  // })
+  return group;
 }
 
 const groupAnswers = async (group) => {
@@ -14,10 +15,11 @@ const groupAnswers = async (group) => {
   let urlFetch = null
   let getItemBirdByPhoto = null
   const birds = getBirds(group)
+
   birds.forEach((item, index) => {
     if (item.answer !== null) {
       getItemBirdByPhoto = { id: index, item: item }
-      let nameBirdsEnglish = Object.keys(item)[0]
+      let nameBirdsEnglish = item.en
       urlFetch = url + method + apiKey + mode + nameBirdsEnglish
     }
   })

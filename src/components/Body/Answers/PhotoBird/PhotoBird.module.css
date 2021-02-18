@@ -1,0 +1,15 @@
+.photo__wrapper {
+    margin: auto;
+    width: 500px;
+    height: 320px;
+}
+.photo {
+    width: 500px;
+    height: 320px;
+
+}
+.hide__answer {
+    width: 500px;
+    height: 320px;
+    background-color: black;
+}

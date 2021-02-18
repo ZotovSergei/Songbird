@@ -1,0 +1,15 @@
+.selected {
+    color: black;
+    background: lawngreen;
+  }
+.unselected {
+  /* color:black; */
+  width: 300px;
+  height: 40px;
+  border: 1px solid grey;
+  border-radius: 15px;
+}
+.list__item {
+  list-style: none;
+  margin-bottom: 8px;
+}

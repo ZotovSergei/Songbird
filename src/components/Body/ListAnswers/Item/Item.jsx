@@ -1,17 +1,30 @@
 import React from 'react'
+import styles from './Item.module.css'
 
 export default function Item(props) {
-  const { id, name, answer } = props
+  const { id, name, answer ,handlerClick,viewElementQuestions} = props
+
+  const getAnswer = (e) => {
+    return handlerClick(e, props);
+    // console.log(props)
+    // console.log(e.target)
+    // if (props.answer != null) {
+    //   document.getElementById(e.target.id).classList.toggle('right__answer')
+    // }
+  }
+
   return (
-    <li key={id + '__click__' + name}>
-      <button
-        onClick={() => console.log(props)}
+    <li key={id + '__click__' + name} className={styles.list__item}>
+      {viewElementQuestions ?
+      (<button
+        onClick={getAnswer}
         key={id + '__' + name}
         id={id}
-        className="unselected"
+        className={styles.unselected + ' item_answer'}
       >
         {name}
-      </button>
+      </button>) : '-----------'
+      }
     </li>
   )
 }

@@ -1,0 +1,13 @@
+.header__questions {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+.category__button {
+    width: 200px;
+    height: 40px;
+}
+#categoryId {
+    grid-area: category;
+  }
+  

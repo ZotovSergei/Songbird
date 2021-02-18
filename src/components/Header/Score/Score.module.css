@@ -1,0 +1,8 @@
+#scoreId {
+    grid-area: score;
+    text-align: end;
+    align-self: center;
+}
+.score__label {
+    font-size: 2.5em;
+}

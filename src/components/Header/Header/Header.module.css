@@ -20,4 +20,18 @@
     color: blue;    
     font-family: 'DancingScript';
     font-weight: 700;
+    font-size: 3.4em;
+}
+.header {
+  display: grid;
+  grid-template-areas:
+  "header_title score" 
+  "category category";
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  height: 205px;
+}
+#titleId {
+  grid-area: header_title;
 }

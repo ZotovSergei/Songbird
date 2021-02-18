@@ -2,20 +2,23 @@ import React from 'react'
 import Item from '../ListAnswers/Item/Item'
 
 export default function ListAnswers(props) {
-  const { birds } = props
+  const { birds, handlerClick,viewElementQuestions } = props
   const answers = Object.values(birds)
+
   const buttonList = answers.map((el, iDx) => (
     <Item
       key={iDx.toString()}
-      id={Object.keys(el)[0]}
-      name={el[Object.keys(el)[0]]}
+      id={el.en}
+      name={el.ru}
       answer={el.answer}
+      handlerClick={handlerClick}
+      viewElementQuestions={viewElementQuestions}
     />
   ))
 
   return (
     <section className="list__answers">
-      <ul>{buttonList}</ul>
+      <ul >{buttonList}</ul>
     </section>
   )
 }

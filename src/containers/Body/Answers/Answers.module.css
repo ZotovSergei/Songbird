@@ -1,0 +1,18 @@
+.data {
+    display: grid;
+    grid-template-areas: 
+    "question question"
+    "list_answer answer";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    justify-items: center;
+    grid-gap: 30px;
+}
+
+#question {
+    grid-area: question;
+}
+#answer {
+    grid-area: answer;
+}
