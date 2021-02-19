@@ -5,11 +5,11 @@ import DescriptionBirds from './DescriptionBirds/DescriptionBirds'
 import styles from './Answers.module.css'
 
 export default function Answers(props) {
-  const { title, description, photo, viewElementsAnswers, enabled, generateId, customStyle ,customClass} = props
+  const { title, description, photo, viewElementsAnswers, enabled, generateId, customStyle ,customClass,sound} = props
   return (
     <div id={generateId} className={styles.question+" "+customClass}>
       <PhotoBird photo={photo} enabled={viewElementsAnswers} style={customStyle}/>
-      <Player title={title.toUpperCase()} enabled={enabled}/>
+      <Player title={title.toUpperCase()} enabled={enabled} sound={sound}/>
       <DescriptionBirds description={description} enabled={viewElementsAnswers}/>
     </div>
   )

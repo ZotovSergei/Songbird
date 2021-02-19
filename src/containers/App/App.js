@@ -8,6 +8,7 @@ import services from '../../store/utils/services'
 import NextButton from '../../components/Shared/NextButton/NextButton'
 import { Component } from 'react'
 import cssModule from '../../components/Body/ListAnswers/Item/Item.module.css'
+import ModuleMessage from '../ModuleMessage/ModuleMessage'
 
 export default class App extends Component {
   constructor(props) {
@@ -18,13 +19,18 @@ export default class App extends Component {
       enableAnswer: false,
       enableQuestion: false,
       score: 0,
+      categoryId: 1,
     }
   }
 
   componentDidMount() {
     for (let item of document.querySelectorAll('.category_button')) {
-      if (item.id != 1) item.disabled = true; 
+      item.disabled = true; 
     }
+    for (let item of document.querySelectorAll('.item_answer')) {
+      item.disabled = true; 
+    }
+    
   }
 
   handlerClickDisabledCategory = (e) => {
@@ -51,18 +57,43 @@ export default class App extends Component {
     console.log('Клик', this, this.state)
   }
 
+  handlerClickNextButton = () => {
+    let category = list[this.state.categoryId]
+    let prevCategory = this.state.categoryId-1;
+    // this.handlerClickDisabledCategory(this.state.categoryId);
+    if (this.state.categoryId > 6) return
+   
+    services(category).then((response) => {
+      this.setState({ groupBirds: response })
+      if (this.state.enableAnswer == true) {
+        this.setState({enableAnswer: false})  
+      }
+      this.setState({enableQuestion: true})
+      document.getElementById(this.state.categoryId).classList.toggle('current_category');
+      this.setState((state,props)=>({categoryId: state.categoryId + 1}))
+      // document.getElementById(this.state.categoryId).classList.toggle('current_category');
+      // document.getElementById(this.state.categoryId-1).classList.toggle('current_category');
+      
+      if (prevCategory != 0) document.getElementById(prevCategory).classList.toggle('current_category');
+    })
+    // this.setState((state,props)=>({categoryId: state.categoryId + 1}))
+    // this.handlerClickDisabledCategory(this.state.categoryId);
+    console.log('Клик', this, this.state)
+  }
+
   handlerClickGetRightAnwer = (e,elementsProps) => {
     this.setState({ enableAnswer: false })
     if (elementsProps.answer != null) {
-      document.querySelector(`#${elementsProps.id}`).classList.toggle(cssModule.selected);
+      document.getElementById(elementsProps.id).classList.toggle(cssModule.selected);
       this.setState({enableAnswer: true})
       for (let item of document.querySelectorAll('.item_answer')) {
         if (item.id != 1) item.disabled = true; 
-      }  
+      }
+      if (this.state.categoryId == 7) this.setState((state,props)=>({categoryId: state.categoryId + 1}))
     }
     this.setState((state,props)=>({score: state.score + 1}))
-    console.log(elementsProps)
-    console.log('Клик', this, this.state)
+    // console.log(elementsProps)
+    // console.log('Клик', this, this.state)
     e.target.disabled = true;
 
   }
@@ -70,6 +101,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <ModuleMessage category={this.state.categoryId} score={this.state.score}/>
         <Header handlerClick={this.handlerClickSetCategoryId} score={this.state.score}/>
         <Questions />
         <Answers
@@ -79,7 +111,7 @@ export default class App extends Component {
           viewElementsAnswers = {this.state.enableAnswer}
           viewElementQuestions = {this.state.enableQuestion}
         />
-        <NextButton />
+        <NextButton category={this.state.categoryId} handlerClick={this.handlerClickNextButton}/>
         <Footer />
       </div>
     )

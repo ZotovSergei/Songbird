@@ -27,7 +27,7 @@ export default function Item(props) {
         onClick={getAnswer}
         key={id + '__' + name}
         id={id}
-        className={styles.unselected + ' item_answer'}
+        className={styles.unselected + ' item_answer_hidden'}
       >
         {'--------------------'}
       </button>
