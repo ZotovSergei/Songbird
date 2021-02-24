@@ -1,22 +1,24 @@
 {
   "files": {
-    "main.css": "/Songbird/static/css/main.327a17b1.chunk.css",
-    "main.js": "/Songbird/static/js/main.0b956da1.chunk.js",
-    "main.js.map": "/Songbird/static/js/main.0b956da1.chunk.js.map",
+    "main.css": "/Songbird/static/css/main.59874b56.chunk.css",
+    "main.js": "/Songbird/static/js/main.d030a723.chunk.js",
+    "main.js.map": "/Songbird/static/js/main.d030a723.chunk.js.map",
     "runtime-main.js": "/Songbird/static/js/runtime-main.9d8f1f56.js",
     "runtime-main.js.map": "/Songbird/static/js/runtime-main.9d8f1f56.js.map",
     "static/js/2.cd528f6e.chunk.js": "/Songbird/static/js/2.cd528f6e.chunk.js",
     "static/js/2.cd528f6e.chunk.js.map": "/Songbird/static/js/2.cd528f6e.chunk.js.map",
     "index.html": "/Songbird/index.html",
-    "static/css/main.327a17b1.chunk.css.map": "/Songbird/static/css/main.327a17b1.chunk.css.map",
+    "static/css/main.59874b56.chunk.css.map": "/Songbird/static/css/main.59874b56.chunk.css.map",
     "static/js/2.cd528f6e.chunk.js.LICENSE.txt": "/Songbird/static/js/2.cd528f6e.chunk.js.LICENSE.txt",
     "static/media/Header.module.css": "/Songbird/static/media/DancingScript-Regular.0e407c56.ttf",
-    "static/media/owl.37d496c4.jpg": "/Songbird/static/media/owl.37d496c4.jpg"
+    "static/media/failedAnswer.cf5f5461.mp3": "/Songbird/static/media/failedAnswer.cf5f5461.mp3",
+    "static/media/owl.37d496c4.jpg": "/Songbird/static/media/owl.37d496c4.jpg",
+    "static/media/succesfullAnswer.c7d2fd1c.mp3": "/Songbird/static/media/succesfullAnswer.c7d2fd1c.mp3"
   },
   "entrypoints": [
     "static/js/runtime-main.9d8f1f56.js",
     "static/js/2.cd528f6e.chunk.js",
-    "static/css/main.327a17b1.chunk.css",
-    "static/js/main.0b956da1.chunk.js"
+    "static/css/main.59874b56.chunk.css",
+    "static/js/main.d030a723.chunk.js"
   ]
 }
