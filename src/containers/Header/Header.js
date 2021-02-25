@@ -11,20 +11,21 @@ export default class Header extends Component {
     super(props)
     this.typeQuestions = Object.entries(categoryQuestions)
     this.count = props.score
+    this.widthScreen = props.widthScreen
+    this.categoryId = this.props.category
   }
 
-  
-  handlerClick = (e) => {
-    console.log(e)
-  }
   render() {
-    return <div>
+    return <>
     <HeaderUI
       count={this.props.score}
       typeQuestions={this.typeQuestions}
       handler={this.props.handlerClick}
+      widthScreen={this.props.widthScreen}
+      category={this.props.category}
+      minWidthScreen={this.props.minWidthScreen}
     />
-  </div>
+  </>
   }
 
 }

@@ -1,6 +1,7 @@
 .player {
     text-align: center;
     width: 100%;
+    flex: 8;
 }
 .player__caption {
     margin-bottom: 20px;

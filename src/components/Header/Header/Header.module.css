@@ -34,3 +34,11 @@
 #titleId {
   grid-area: header_title;
 }
+@media screen and (max-width: 450px) {
+  .header {
+    grid-template-areas:
+    "header_title header_title"
+    "score score" 
+    "category category";
+  }
+}

@@ -8,7 +8,7 @@ export default function ModuleMessage({category, score}) {
     const result = text +'. Заработанные очки: ' + score
     return (
         <>
-            {category >7 ? <div className="wrapper_modal_box">                
+            {category > 6 ? <div className="wrapper_modal_box">                
                 <section className={'module__box'}>{result}
                 <button onClick={handlerClick} className={'unselected'}>{"Выйти"}
                 </button></section> 

@@ -8,7 +8,8 @@ export default function PhotoBird(props) {
       <img className={styles.photo + " " +style} src={photo} alt="owl"/></div>
   ) 
   : <div className={styles.hide__answer + ' ' + style}>
-      <span>Image</span>
+      <p> Выберите птицу по ее "голосу".</p>
+      <p>При успешноv ответе, переходите на следующий уровень.</p>
     </div>
   return elementPhoto
 }

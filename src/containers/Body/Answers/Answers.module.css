@@ -21,3 +21,12 @@
 .answer {
     flex-direction: column;
 }
+
+@media screen and (max-width: 600px) {
+    .data {
+        grid-template-areas: 
+        "question question"
+        "list_answer list_answer"
+        "answer answer";
+    }
+}

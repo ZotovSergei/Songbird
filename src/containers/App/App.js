@@ -9,6 +9,8 @@ import NextButton from '../../components/Shared/NextButton/NextButton'
 import { Component } from 'react'
 import cssModule from '../../components/Body/ListAnswers/Item/Item.module.css'
 import ModuleMessage from '../ModuleMessage/ModuleMessage'
+import failedAnswer from '../../store/assets/sounds/failedAnswer.mp3'
+import succesfullAnswer from '../../store/assets/sounds/succesfullAnswer.mp3'
 
 export default class App extends Component {
   constructor(props) {
@@ -20,17 +22,24 @@ export default class App extends Component {
       enableQuestion: false,
       score: 0,
       categoryId: 1,
+      widthScreen: 2,
+      minWidthScreen: 400,
+      maxWidthScreen: 700,
+      averageWidthScreen: 500,
+      whenViewModalBox: 1,
+      isDisabledNextButton: true,
     }
   }
-
   componentDidMount() {
-    for (let item of document.querySelectorAll('.category_button')) {
-      item.disabled = true; 
-    }
-    for (let item of document.querySelectorAll('.item_answer')) {
-      item.disabled = true; 
-    }
-    
+    this.setState((state,props)=>({widthScreen: state.widthScreen = window.innerWidth}))
+    window.addEventListener('resize',(e)=>{
+      if (e.target.innerWidth < this.state.minWidthScreen){
+        this.setState((state,props)=>({widthScreen: state.widthScreen = e.target.innerWidth}))
+      }
+      else if (e.target.innerWidth > this.state.averageWidthScreen && e.target.innerWidth < this.state.maxWidthScreen) {
+        this.setState((state,props)=>({widthScreen: state.widthScreen = e.target.innerWidth}))
+      }
+    })
   }
 
   handlerClickDisabledCategory = (e) => {
@@ -58,10 +67,14 @@ export default class App extends Component {
   }
 
   handlerClickNextButton = () => {
-    let category = list[this.state.categoryId]
-    let prevCategory = this.state.categoryId-1;
-    // this.handlerClickDisabledCategory(this.state.categoryId);
-    if (this.state.categoryId > 6) return
+    let categoryId = this.state.categoryId + 1;   
+    let category = list[categoryId]
+    if (!category)  {
+      this.setState((state,props)=>({categoryId: state.categoryId + 1}))
+      return
+    }
+    let prevCategory = categoryId-1;
+    if (categoryId > 6) return
    
     services(category).then((response) => {
       this.setState({ groupBirds: response })
@@ -69,28 +82,36 @@ export default class App extends Component {
         this.setState({enableAnswer: false})  
       }
       this.setState({enableQuestion: true})
-      document.getElementById(this.state.categoryId).classList.toggle('current_category');
-      this.setState((state,props)=>({categoryId: state.categoryId + 1}))
-      // document.getElementById(this.state.categoryId).classList.toggle('current_category');
-      // document.getElementById(this.state.categoryId-1).classList.toggle('current_category');
-      
-      if (prevCategory != 0) document.getElementById(prevCategory).classList.toggle('current_category');
+      this.setState((state,props)=>(
+          {
+            categoryId: state.categoryId + 1,
+            isDisabledNextButton: state.isDisabledNextButton = !state.isDisabledNextButton}))
+      if (prevCategory != 0) document.getElementById(categoryId).classList.toggle('current_category');
     })
-    // this.setState((state,props)=>({categoryId: state.categoryId + 1}))
-    // this.handlerClickDisabledCategory(this.state.categoryId);
     console.log('Клик', this, this.state)
   }
 
   handlerClickGetRightAnwer = (e,elementsProps) => {
+    let audio = new Audio(failedAnswer);
+   
     this.setState({ enableAnswer: false })
     if (elementsProps.answer != null) {
+      audio = new Audio(succesfullAnswer)
       document.getElementById(elementsProps.id).classList.toggle(cssModule.selected);
       this.setState({enableAnswer: true})
-      for (let item of document.querySelectorAll('.item_answer')) {
-        if (item.id != 1) item.disabled = true; 
-      }
+        for (let item of document.querySelectorAll('.item_answer')) {
+          if (item.id != 1) item.disabled = true; 
+        }
+
       if (this.state.categoryId == 7) this.setState((state,props)=>({categoryId: state.categoryId + 1}))
+      this.setState((state,props)=>(
+        {
+          whenViewModalBox: state.whenViewModalBox + 1,
+          isDisabledNextButton: state.isDisabledNextButton = !state.isDisabledNextButton
+        }))
     }
+
+    audio.play();
     this.setState((state,props)=>({score: state.score + 1}))
     // console.log(elementsProps)
     // console.log('Клик', this, this.state)
@@ -101,9 +122,15 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <ModuleMessage category={this.state.categoryId} score={this.state.score}/>
-        <Header handlerClick={this.handlerClickSetCategoryId} score={this.state.score}/>
-        <Questions />
+        <ModuleMessage category={this.state.whenViewModalBox} score={this.state.score}/>
+        <Header 
+          handlerClick={this.handlerClickSetCategoryId}
+          score={this.state.score} 
+          widthScreen={this.state.widthScreen} 
+          category={this.state.categoryId}
+          minWidthScreen = {this.state.minWidthScreen}
+          />
+        {/* <Questions /> */}
         <Answers
           idCategory={this.state.idCategoryQuestions}
           groupBirds={this.state.groupBirds}
@@ -111,7 +138,7 @@ export default class App extends Component {
           viewElementsAnswers = {this.state.enableAnswer}
           viewElementQuestions = {this.state.enableQuestion}
         />
-        <NextButton category={this.state.categoryId} handlerClick={this.handlerClickNextButton}/>
+        <NextButton isDisabled={this.state.isDisabledNextButton} category={this.state.categoryId} handlerClick={this.handlerClickNextButton}/>
         <Footer />
       </div>
     )

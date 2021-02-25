@@ -4,12 +4,14 @@
   }
 .unselected {
   /* color:black; */
-  width: 300px;
+  /* width: 300px; */
+  width: 100%;
   height: 40px;
   border: 1px solid grey;
   border-radius: 15px;
 }
 .list__item {
   list-style: none;
-  margin-bottom: 8px;
+  flex: 1 0;
+  /* margin-bottom: 8px; */
 }

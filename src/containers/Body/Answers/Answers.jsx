@@ -9,22 +9,26 @@ export default function Answers(props) {
   const answer = groupBirds.filter((item) => {
     return item.answer != null
   })
+  if (answer.length == 0) {
+    let idx = Math.floor(Math.random() * 6)
+    answer[0] = groupBirds[idx].answer = 'anwer';
+  }
   // const title = 'Owl'
   // const description =
   //   'Dolore proident culpa ad duis laborum. Nisi qui ut aute laborum sit veniam sit officia nostrud ipsum commodo velit. Aliquip et ex qui culpa quis.'
   return (
     <div className={styles.data}>
       <AnswersUI
-        title={viewElementsAnswers ? answer[0].ru : '????'}
+        title={viewElementsAnswers ? answer[0].ru : '******'}
         description={false ? answer[0].description : false}
         photo={(!!answer[0] && viewElementsAnswers) ? answer[0].image : null}
         viewElementsAnswers={viewElementsAnswers}
         generateId = {styles.question}
         enabled={true}
         customStyle={'question'}
-        sound={viewElementQuestions ? answer[0].audio : false}
+        sound={answer[0].audio || false}
       />
-      <ListAnswers groupAnswers={groupBirds} handlerClick={handlerClick} viewElementQuestions={viewElementQuestions}/>
+      <ListAnswers groupAnswers={groupBirds} handlerClick={handlerClick} viewElementQuestions={true}/>
       <AnswersUI
         title={!!answer[0] && viewElementsAnswers ? answer[0].ru : '????'}
         description={viewElementsAnswers ? answer[0].description : false}
