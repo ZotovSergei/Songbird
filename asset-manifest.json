@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Songbird/static/css/main.ade2ef6e.chunk.css",
-    "main.js": "/Songbird/static/js/main.8546aea8.chunk.js",
-    "main.js.map": "/Songbird/static/js/main.8546aea8.chunk.js.map",
+    "main.js": "/Songbird/static/js/main.a56744b1.chunk.js",
+    "main.js.map": "/Songbird/static/js/main.a56744b1.chunk.js.map",
     "runtime-main.js": "/Songbird/static/js/runtime-main.9d8f1f56.js",
     "runtime-main.js.map": "/Songbird/static/js/runtime-main.9d8f1f56.js.map",
-    "static/js/2.58396f24.chunk.js": "/Songbird/static/js/2.58396f24.chunk.js",
-    "static/js/2.58396f24.chunk.js.map": "/Songbird/static/js/2.58396f24.chunk.js.map",
+    "static/js/2.cd528f6e.chunk.js": "/Songbird/static/js/2.cd528f6e.chunk.js",
+    "static/js/2.cd528f6e.chunk.js.map": "/Songbird/static/js/2.cd528f6e.chunk.js.map",
     "index.html": "/Songbird/index.html",
     "static/css/main.ade2ef6e.chunk.css.map": "/Songbird/static/css/main.ade2ef6e.chunk.css.map",
-    "static/js/2.58396f24.chunk.js.LICENSE.txt": "/Songbird/static/js/2.58396f24.chunk.js.LICENSE.txt",
+    "static/js/2.cd528f6e.chunk.js.LICENSE.txt": "/Songbird/static/js/2.cd528f6e.chunk.js.LICENSE.txt",
     "static/media/Header.module.css": "/Songbird/static/media/DancingScript-Regular.0e407c56.ttf",
     "static/media/average.99d8ed4b.svg": "/Songbird/static/media/average.99d8ed4b.svg",
     "static/media/dislike.8a11b11b.svg": "/Songbird/static/media/dislike.8a11b11b.svg",
@@ -20,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.9d8f1f56.js",
-    "static/js/2.58396f24.chunk.js",
+    "static/js/2.cd528f6e.chunk.js",
     "static/css/main.ade2ef6e.chunk.css",
-    "static/js/main.8546aea8.chunk.js"
+    "static/js/main.a56744b1.chunk.js"
   ]
 }
