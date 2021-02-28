@@ -19,7 +19,7 @@ export default function Answers(props) {
   return (
     <div className={styles.data}>
       <AnswersUI
-        title={viewElementsAnswers ? answer[0].ru : '******'}
+        title={viewElementsAnswers ? answer[0].ru : '\u2605\u2605\u2605\u2605\u2605'}
         description={false ? answer[0].description : false}
         photo={(!!answer[0] && viewElementsAnswers) ? answer[0].image : null}
         viewElementsAnswers={viewElementsAnswers}

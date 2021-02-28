@@ -53,12 +53,12 @@ button,
 button:active, 
 button:focus {
     outline: none;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .current_category {
   background: coral;
   color: black;
-  border: 3px solid slategrey;
+  /* border: 3px solid slategrey; */
 }
 .module__box >button {
   margin-top: 20px;
@@ -69,8 +69,8 @@ button:focus {
 }
 .module__box {
   opacity: 1;
-  width: 400px;
-  height: 200px;
+  /* width: 400px; */
+  /* height: 200px; */
   display: flex;
   position: absolute;
   z-index: 12;
@@ -80,6 +80,7 @@ button:focus {
   border-radius: 30px;
   flex-direction: column;
   justify-content: center;
+  padding: 35px;
 }
 .wrapper_modal_box {
   z-index: 10;

@@ -21,6 +21,7 @@ export default class App extends Component {
       enableAnswer: false,
       enableQuestion: false,
       score: 0,
+      failedScore: 0,
       categoryId: 1,
       widthScreen: 2,
       minWidthScreen: 400,
@@ -93,7 +94,6 @@ export default class App extends Component {
 
   handlerClickGetRightAnwer = (e,elementsProps) => {
     let audio = new Audio(failedAnswer);
-   
     this.setState({ enableAnswer: false })
     if (elementsProps.answer != null) {
       audio = new Audio(succesfullAnswer)
@@ -109,20 +109,37 @@ export default class App extends Component {
           whenViewModalBox: state.whenViewModalBox + 1,
           isDisabledNextButton: state.isDisabledNextButton = !state.isDisabledNextButton
         }))
+        this.setState((state,props)=>({score: state.score + 1}))
     }
-
+    this.setState((state,props)=>({failedScore: state.failedScore + 1}))
     audio.play();
-    this.setState((state,props)=>({score: state.score + 1}))
     // console.log(elementsProps)
     // console.log('Клик', this, this.state)
     e.target.disabled = true;
 
   }
 
+  handlerClickModalBoxExit = () => {
+    // document.querySelector('.wrapper_modal_box').remove()
+    this.setState((state,props)=>(
+      {
+        groupBirds: list[1],
+        enableAnswer: false,
+        enableQuestion: false,
+        score: 0,
+        categoryId: 1,
+        isDisabledNextButton: true,
+        whenViewModalBox: state.whenViewModalBox - 6,
+      }))
+      document.querySelectorAll('.current_category').forEach((item,index)=> {
+        if (index!= 0) item.classList.toggle('current_category')
+      })
+  }
+
   render() {
     return (
       <div>
-        <ModuleMessage category={this.state.whenViewModalBox} score={this.state.score}/>
+        <ModuleMessage category={this.state.whenViewModalBox} score={this.state.score} handlerClick={this.handlerClickModalBoxExit} failedScore={this.state.failedScore}/>
         <Header 
           handlerClick={this.handlerClickSetCategoryId}
           score={this.state.score} 
