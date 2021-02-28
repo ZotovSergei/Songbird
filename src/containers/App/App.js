@@ -111,7 +111,10 @@ export default class App extends Component {
         }))
         this.setState((state,props)=>({score: state.score + 1}))
     }
-    this.setState((state,props)=>({failedScore: state.failedScore + 1}))
+    else {
+      this.setState((state,props)=>({failedScore: state.failedScore + 1}))
+    }
+    console.log(this.state.failedScore)
     audio.play();
     // console.log(elementsProps)
     // console.log('Клик', this, this.state)
@@ -129,7 +132,8 @@ export default class App extends Component {
         score: 0,
         categoryId: 1,
         isDisabledNextButton: true,
-        whenViewModalBox: state.whenViewModalBox - 6,
+        whenViewModalBox: 1,
+        failedScore: 0,
       }))
       document.querySelectorAll('.current_category').forEach((item,index)=> {
         if (index!= 0) item.classList.toggle('current_category')

@@ -6,8 +6,8 @@ import average from '../../store/assets/images/average.svg';
 
 export default function ModuleMessage({category, score, handlerClick, failedScore}) {
    
-    const img = dislike;
-    const text = 'Игра завершена. Попробуйте снова'
+    let img = dislike;
+    let text = 'Игра завершена. Попробуйте снова'
     if (score == 6 && failedScore == 0) {
         text = 'Птицы отгаданы успешно. Мастер'
         img = like;
